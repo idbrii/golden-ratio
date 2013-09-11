@@ -134,6 +134,18 @@ function! s:resize_to_golden_ratio()
   call s:resize_main_window(winnr(), l:aw, l:ah, l:bw, l:bh)
 endfunction
 
+function! s:clear_local_golden_ratio()
+  if exists('b:golden_ratio_saved_wrap')
+    let &l:wrap = b:golden_ratio_saved_wrap
+    unlet b:golden_ratio_saved_wrap
+  endif
+endfunction
+
+function! s:clear_global_golden_ratio()
+  windo call s:clear_local_golden_ratio()
+  wincmd =
+endfunction
+
 function! s:toggle_global_golden_ratio()
   if s:gr_auto
     let s:gr_auto = 0
@@ -161,9 +173,12 @@ nnoremap <Plug>(golden_ratio_resize) :<C-u>call <SID>resize_to_golden_ratio()<CR
 inoremap <Plug>(golden_ratio_resize) <Esc>:call <SID>resize_to_golden_ratio()<CR>a
 nnoremap <Plug>(golden_ratio_toggle) :<C-u>call <SID>toggle_global_golden_ratio()<CR>
 inoremap <Plug>(golden_ratio_toggle) <Esc>:call <SID>toggle_global_golden_ratio()<CR>a
+nnoremap <Plug>(golden_ratio_clear) :<C-u>call <SID>clear_global_golden_ratio()<CR>
+inoremap <Plug>(golden_ratio_clear) <Esc>:call <SID>clear_global_golden_ratio()<CR>a
 
 command! GoldenRatioResize call <SID>resize_to_golden_ratio()
 command! GoldenRatioToggle call <SID>toggle_global_golden_ratio()
+command! GoldenRatioClear call <SID>clear_global_golden_ratio()
 
 cabbrev grresize GoldenRatioResize
 cabbrev grtoggle GoldenRatioToggle

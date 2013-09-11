@@ -61,16 +61,17 @@ open. Note: Depending on the window layout this may not always work.
 ===============================================================================
 3. Commands                                             *golden-ratio-commands*
 
-                                                        
                                                           *golden-ratio-resize*
 :GoldenRatioResize 
   It will resize the current window 
 
-                                                        
-
                                                           *golden-ratio-toggle*
 :GoldenRatioToggle
   Will turn the plugin autocommand on or off
+
+                                                          *golden-ratio-clear*
+:GoldenRatioClear
+  Restores 'wrap' setting and equalizes window sizes like CTRL-W_= 
 
 
 ===============================================================================
@@ -84,6 +85,9 @@ open. Note: Depending on the window layout this may not always work.
 <Plug>(golden_ratio_toggle)
   It will switch on and off the automatic resizing of windows
 
+                                                     *golden-ratio-clear-plug*
+<Plug>(golden_ratio_clear)
+  Restores 'wrap' setting and equalizes window sizes like CTRL-W_= 
 
 ===============================================================================
 5. Credits                                               *golden-ratio-credits*
